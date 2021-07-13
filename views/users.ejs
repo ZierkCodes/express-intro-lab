@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <link rel="stylesheet" href="public/css/uikit.min.css" type='text/css' />
+    <script src="public/js/uikit.min.js"></script>
+    <script src="public/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div class="uk-container uk-margin-large-top">
+    <h1>All Users</h1>
+        <% if(error) { %>
+            <div class="uk-alert-danger" uk-alert>
+                <p><%= error %></p>
+            </div>
+        <% } else { %> 
+            <table class="uk-table uk-table-striped">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(function(user) { %>
+                    <tr>
+                        <td><%= `${user.first} ${user.last}` %> </td>
+                        <td><%= user.email %> </td>
+                        <td><a class="uk-button uk-button-primary" href=<%= `/users/${user._id}` %>>View User</a></td>
+                    </tr>
+                    <% }); %> 
+                </tbody>
+            </table>
+        <% } %> 
+
+    </div>
+</body>
+</html>

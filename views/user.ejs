@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Users</title>
+    <link rel="stylesheet" href="../public/css/uikit.min.css" type='text/css' />
+    <script src="../public/js/uikit.min.js"></script>
+    <script src="../public/js/uikit-icons.min.js"></script>
+</head>
+<body>
+    <div class="uk-container uk-margin-large-top">
+        <h1>User Card</h1>
+    <% if(error) { %>
+        <div class="uk-alert-danger uk-flex uk-flex-middle uk-flex-between" uk-alert>
+            <p class="uk-margin-remove"><%= error %></p>
+            <a class="uk-button uk-button-danger" href="/">View All Users</a>
+        </div>
+    <% } else { %> 
+        <div class="uk-card uk-card-body uk-card-default uk-card-hover uk-width-1-2">
+            <h1 class="uk-card-title"><%= `${user.first} ${user.last}` %> <a class="uk-button uk-button-default uk-align-right" href="/">View All Users</a></h1>
+            <dl class="uk-description-list">
+                <dt>USER ID</dt>
+                <dd><%= user._id %></dd>
+                <dt>EMAIL</dt>
+                <dd><%= user.email %></dd>
+                <dt>DATE CREATED</dt>
+                <dd><%= `${user.date_created.getMonth() + 1}/${user.date_created.getDate()}/${user.date_created.getFullYear()}` %></dd>
+            </dl>
+        </div>
+    <% } %> 
+
+    </div>
+</body>
+</html>
